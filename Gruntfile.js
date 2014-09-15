@@ -107,22 +107,49 @@ module.exports = function(grunt) {
       dynamic: {
         files: [{
           expand: true,
-          cwd: 'assets/src/',
+          cwd: 'assets/src/bg/',
           src: ['**/*.{png,jpg,gif,svg}'],
-          dest: 'assets/img/'
+          dest: 'assets/img/bg/'
         }]
       }
     },
     clean: {
-      dist: {
-        src: ['assets/img/*']
+      icons: {
+        src: ['assets/css/icons.*.css', 'assets/css/*.{txt,html}', 'assets/img/icons/*']
       }
     },
     delete_sync: {
       dist: {
-        cwd: 'assets/img/',
+        cwd: 'assets/img/bg/',
         src: ['**/*.{png,jpg,gif,svg}'],
-        syncWith: 'assets/src/'
+        syncWith: 'assets/src/bg/'
+      }
+    },
+    grunticon: {
+      icons: {
+        files: [{
+          expand: true,
+          cwd: 'assets/src/svg/',
+          src: ['**/*.{svg,png}'],
+          dest: 'assets/css/'
+        }],
+        options: {
+          datasvgcss: 'icons.data.svg.css',
+          datapngcss: 'icons.data.png.css',
+          urlpngcss: 'icons.fallback.css',
+          previewhtml: 'preview.html',
+          loadersnippet: 'grunticon.loader.txt',
+          pngfolder: '../img/icons/',
+          cssprefix: '.icon-',
+          customselectors: {
+            //'*': ['.icon-$1:before']
+          },
+          defaultWidth: '64px',
+          defaultHeight: '64px',
+          colors: {
+            'brand_primary' : '#97CFCE'
+          }
+        }
       }
     },
     modernizr: {
@@ -175,9 +202,15 @@ module.exports = function(grunt) {
       },
       images: {
         files: [
-          'assets/src/**/*.{png,jpg,gif,svg}'
+          'assets/src/bg/**/*.{png,jpg,gif,svg}'
         ],
         tasks: ['delete_sync', 'newer:imagemin:dynamic']
+      },
+      icons: {
+        files: [
+          'assets/src/svg/**/*.svg'
+        ],
+        tasks: ['clean:icons', 'grunticon:icons']
       },
       livereload: {
         // Browser live reloading
@@ -203,8 +236,10 @@ module.exports = function(grunt) {
     'less:dev',
     'autoprefixer:dev',
     'concat',
-    'clean',
-    'imagemin'
+    'clean:icons',
+    'grunticon',
+    'delete_sync',
+    'newer:imagemin'
   ]);
   grunt.registerTask('build', [
     'jshint',
@@ -212,8 +247,10 @@ module.exports = function(grunt) {
     'autoprefixer:build',
     'uglify',
     'modernizr',
-    'clean',
-    'imagemin',
+    'clean:icons',
+    'grunticon',
+    'delete_sync',
+    'newer:imagemin',
     'version'
   ]);
 };

@@ -152,15 +152,25 @@ module.exports = function(grunt) {
         }
       }
     },
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['path/**'],
+            dest: '../roots_ftp/',
+            //filter: 'isFile'
+          },
+        ]
+      }
+    },
     modernizr: {
       build: {
         devFile: 'assets/vendor/modernizr/modernizr.js',
         outputFile: 'assets/js/vendor/modernizr.min.js',
         files: {
-          'src': [
-            ['assets/js/scripts.min.js'],
-            ['assets/css/main.min.css']
-          ]
+          src: ['assets/js/scripts.min.js', 'assets/css/main.min.css']
         },
         uglify: true,
         parseFiles: true

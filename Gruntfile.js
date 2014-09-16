@@ -103,6 +103,48 @@ module.exports = function(grunt) {
         src: 'assets/css/main.min.css'
       }
     },
+    delete_sync: {
+      dist: {
+        cwd: 'assets/img/bg/',
+        src: ['**/*.{png,jpg,gif,svg}'],
+        syncWith: 'assets/src/bg/'
+      }
+    },
+    clean: {
+      ftp: {
+        options: {
+          force: true
+        },
+        src: ['../roots_ftp/*', '!../roots_ftp/style.css']
+      },
+      icons: {
+        src: ['assets/css/icons.*.css', 'assets/css/*.{txt,html}', 'assets/img/icons/*']
+      }
+    },
+    copy: {
+      toftp: {
+        files: [
+          {
+            expand: true,
+            //flatten: true,
+            src: [
+              '*.{php,css,png}',
+              '!style.css',
+              'lang/*',
+              'lib/*',
+              'templates/*',
+              'assets/{fonts,img}/**/*',
+              'assets/{css,js}/{main,scripts}.min.{css,js}',
+              'assets/js/vendor/modernizr.min.js',
+              'assets/css/editor-style.css',
+              'assets/css/icons.*.css'
+            ],
+            dest: '../roots_ftp/',
+            //filter: 'isFile'
+          }
+        ]
+      }
+    },
     imagemin: {
       dynamic: {
         files: [{
@@ -111,18 +153,6 @@ module.exports = function(grunt) {
           src: ['**/*.{png,jpg,gif,svg}'],
           dest: 'assets/img/bg/'
         }]
-      }
-    },
-    clean: {
-      icons: {
-        src: ['assets/css/icons.*.css', 'assets/css/*.{txt,html}', 'assets/img/icons/*']
-      }
-    },
-    delete_sync: {
-      dist: {
-        cwd: 'assets/img/bg/',
-        src: ['**/*.{png,jpg,gif,svg}'],
-        syncWith: 'assets/src/bg/'
       }
     },
     grunticon: {
@@ -150,19 +180,6 @@ module.exports = function(grunt) {
             'brand_primary' : '#97CFCE'
           }
         }
-      }
-    },
-    copy: {
-      main: {
-        files: [
-          {
-            expand: true,
-            flatten: true,
-            src: ['path/**'],
-            dest: '../roots_ftp/',
-            //filter: 'isFile'
-          },
-        ]
       }
     },
     modernizr: {
@@ -261,6 +278,8 @@ module.exports = function(grunt) {
     'grunticon',
     'delete_sync',
     'newer:imagemin',
-    'version'
+    'version',
+    'clean:ftp',
+    'copy:toftp'
   ]);
 };

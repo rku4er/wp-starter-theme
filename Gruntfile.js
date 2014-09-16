@@ -126,7 +126,6 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            //flatten: true,
             src: [
               '*.{php,css,png}',
               '!style.css',
@@ -139,8 +138,7 @@ module.exports = function(grunt) {
               'assets/css/editor-style.css',
               'assets/css/icons.*.css'
             ],
-            dest: '../roots_ftp/',
-            //filter: 'isFile'
+            dest: '../roots_ftp/'
           }
         ]
       }

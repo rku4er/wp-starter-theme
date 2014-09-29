@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: Full width
+*/
+?>
+
 <?php while (have_posts()) : the_post(); ?>
   <article class="hentry">
     <div class="entry-content">

@@ -1,7 +1,9 @@
-<header class="banner navbar navbar-default navbar-static-top" role="banner">
+<header class="navbar navbar-default navbar-static-top" role="banner">
+
   <div class="container">
 
     <div class="navbar-header">
+
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -9,8 +11,11 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="#">Nielsen Design</a>
+      <a href="<?php echo get_bloginfo('url'); ?>" class="navbar-brand"><?php echo get_bloginfo('name'); ?></a>
+
     </div>
+
+    <?php get_search_form(); ?>
 
     <nav class="collapse navbar-collapse" role="navigation">
       <?php
@@ -19,5 +24,7 @@
         endif;
       ?>
     </nav>
+
   </div>
+
 </header>

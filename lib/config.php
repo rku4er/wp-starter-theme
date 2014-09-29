@@ -11,7 +11,9 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+$gai = function_exists('get_field') ? get_field('google_analytics_id', 'options') : '';
+define('GOOGLE_ANALYTICS_ID', $gai);
+// UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
 
 /**
  * .main classes
@@ -62,7 +64,8 @@ function roots_display_sidebar() {
      * Any of these page templates that return true won't show the sidebar
      */
     array(
-      //'template-home.php'
+      //'template-home.php',
+      'template-fullwidth.php'
     )
   );
 

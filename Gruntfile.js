@@ -5,6 +5,8 @@ module.exports = function(grunt) {
   // Show elapsed time
   require('time-grunt')(grunt);
 
+  var rootPath = '/home/nblxtap/HTTPdocs/project/www/wp-content/themes/roots/';
+
   var jsFileList = [
     'assets/vendor/bootstrap/js/transition.js',
     'assets/vendor/bootstrap/js/alert.js',
@@ -18,7 +20,8 @@ module.exports = function(grunt) {
     'assets/vendor/bootstrap/js/scrollspy.js',
     'assets/vendor/bootstrap/js/tab.js',
     'assets/vendor/bootstrap/js/affix.js',
-    //'assets/vendor/jquery.easing/jquery.easing.1.3.js',
+    'assets/vendor/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js',
+    'assets/vendor/jquery.easing/jquery.easing.1.3.js',
     //'assets/vendor/jquery-mousewheel/jquery.mousewheel.js',
     //'assets/vendor/Columnizer-jQuery-Plugin/src/jquery.columnizer.js',
     //'assets/vendor/jquery-waypoints/waypoints.js',
@@ -53,7 +56,7 @@ module.exports = function(grunt) {
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
           sourceMap: true,
           sourceMapFilename: 'assets/css/main.css.map',
-          sourceMapRootpath: '/home/nblxtap/HTTPdocs/onebrideguide-wp/www/wp-content/themes/roots/'
+          sourceMapRootpath: rootPath
         }
       },
       build: {
@@ -172,10 +175,10 @@ module.exports = function(grunt) {
           customselectors: {
             //'*': ['.icon-$1:before']
           },
-          defaultWidth: '64px',
-          defaultHeight: '64px',
+          defaultWidth: '20px',
+          defaultHeight: '20px',
           colors: {
-            'brand_primary' : '#97CFCE'
+            'dark' : '#444'
           }
         }
       }

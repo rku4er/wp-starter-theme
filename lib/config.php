@@ -16,6 +16,12 @@ define('GOOGLE_ANALYTICS_ID', $gai);
 // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
 
 /**
+ * Set variable for Client platform detection
+ */
+$detect = new Mobile_Detect;
+$deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
+
+/**
  * .main classes
  */
 function roots_main_class() {

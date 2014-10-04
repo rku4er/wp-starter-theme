@@ -15,6 +15,11 @@
   <div class="wrap container" role="document">
     <div class="content row">
       <main class="main <?php echo roots_main_class(); ?>" role="main">
+        <?php if(!is_front_page()): ?>
+          <div class="breadcrumbs">
+            <?php if(function_exists('bcn_display')) bcn_display(); ?>
+          </div>
+        <?php endif; ?>
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
       <?php if (roots_display_sidebar()) : ?>

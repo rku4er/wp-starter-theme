@@ -56,7 +56,7 @@ function roots_display_sidebar() {
      */
     array(
       'is_404',
-      //'is_front_page',
+      'is_front_page',
       //array('is_page', array(42, 'page-slug', 'Page Title'))
     ),
     /**
@@ -64,7 +64,7 @@ function roots_display_sidebar() {
      * Any of these page templates that return true won't show the sidebar
      */
     array(
-      //'template-home.php',
+      'template-home.php',
       'template-fullwidth.php'
     )
   );

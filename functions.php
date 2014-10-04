@@ -21,6 +21,7 @@ $roots_includes = array(
   'lib/comments.php',        // Custom comments modifications
   'lib/scripts.php',         // Scripts and stylesheets
   'lib/extras.php',          // Custom functions
+  'lib/detect.php',          // Client platform detection
 );
 
 foreach ($roots_includes as $file) {

@@ -1,6 +1,20 @@
+<?php
+  $logo = '<a href="'. get_bloginfo('url') .'"><img src="'. get_template_directory_uri() .'/assets/img/bg/logo.png" alt="'. get_bloginfo('name') .'"></a>';
+?>
+
 <header class="navbar navbar-default navbar-static-top" role="banner">
 
   <div class="container">
+
+    <?php if(is_home()): ?>
+      <h1 class="logo"><?php echo $logo; ?></h1>
+    <?php else: ?>
+      <strong class="logo"><?php echo $logo; ?></strong>
+    <?php endif; ?>
+
+    <p class="tagline"><?php echo get_bloginfo('description'); ?></p>
+
+    <?php get_search_form(); ?>
 
     <div class="navbar-header">
 
@@ -14,8 +28,6 @@
       <a href="<?php echo get_bloginfo('url'); ?>" class="navbar-brand"><?php echo get_bloginfo('name'); ?></a>
 
     </div>
-
-    <?php get_search_form(); ?>
 
     <nav class="collapse navbar-collapse" role="navigation">
       <?php

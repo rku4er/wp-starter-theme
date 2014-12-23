@@ -18,8 +18,8 @@ define('GOOGLE_ANALYTICS_ID', $gai);
 /**
  * Set variable for Client platform detection
  */
-$detect = new Mobile_Detect;
-$deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
+$detect = class_exists('Mobile_Detect') ? new Mobile_Detect : null;
+$deviceType = ($detect) ? ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer') : null ;
 
 /**
  * .main classes
